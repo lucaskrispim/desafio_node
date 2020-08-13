@@ -44,7 +44,16 @@
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
-
+      <% if(validacao.length>0){ %>
+      <div class="alert alert-danger">
+        <strong>Atenção!</strong>
+        <ul>
+          <% for(let i=0; i<validacao.length;i++){ %>
+          <li> <%=validacao[i].msg%> </li>
+          <% } %>
+        </ul>
+      </div>
+      <% } %>
       <div class="col-xl-7 col-lg-9 col-md-6">
 
         <div class="card o-hidden border-success shadow my-5">
@@ -57,12 +66,12 @@
                 <div class="p-5">
                   <form class="user" action="/admautenticar" method="post">
                     <div class="form-group">
-                      <input class="form-control form-control-user" id="exampleInputEmail"
-                        aria-describedby="emailHelp" placeholder="Login">
+                      <input class="form-control form-control-user" name="usuario" id="exampleInputEmail" aria-describedby="emailHelp"
+                        placeholder="Login">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                        placeholder="Senha">
+                      <input type="password" name="senha" class="form-control form-control-user" id="exampleInputPassword"
+                        placeholder="senha">
                     </div>
                     <div class="form-group">
                     </div>
