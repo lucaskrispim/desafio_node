@@ -18,6 +18,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-light border border-success rounded  mb-4">
             <button type="button" class="btn btn-outline-success m-1" onclick="criarEvento()">Criar evento</button>
         </nav>
+
         <% if(validacao.length>0){ %>
         <div class="alert alert-danger">
             <strong>Atenção!</strong>
@@ -28,6 +29,39 @@
             </ul>
         </div>
         <% } %>
+
+        <form action="/admcreate" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputEmail4">Nome</label>
+                    <input class="form-control" name="nome">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4">Data</label>
+                    <input class="form-control" name="data">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4">Local</label>
+                    <input class="form-control" name="local">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputEmail4">Valor</label>
+                    <input class="form-control" name="valor">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4"> Ingressos disponíveis </label>
+                    <input class="form-control" name="ingressos_disp">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4">Empresa</label>
+                    <input class="form-control" name="empresa">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-warning m-1">Criar</button>
+        </form>
+
         <div class="row">
             <div class="col-md-9">
                 <h2>Listagem de Eventos</h2>
@@ -104,6 +138,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        function rotaAdm() {
+            window.location.href = '/admlogin';
+        }
+        function rotaCliente() {
+            window.location.href = '/clientelogin';
+        }            
+    </script>
 
     <script type="text/javascript">
         function criarEvento() {
