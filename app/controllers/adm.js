@@ -12,6 +12,18 @@ class Adm {
 
     }
 
+    static logout(app, req, res) {
+        if (!req.session.autorizado) {
+            res.render('loginadm', { validacao: [] });
+        } else {
+            req.session.autorizado = false;
+            req.session.usuario = '';
+            req.session.senha = '';
+            res.redirect('/');
+        }
+    }
+
+
     static autenticar(app, req, res) {
 
         if (!req.session.autorizado) {

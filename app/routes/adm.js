@@ -21,10 +21,14 @@ module.exports = (app) => { // rota da inserção externa de dados na aplicaçã
 
   app.get('/admcriar', (req, res) => {
     app.app.controllers.adm.criar(app, req, res);
-  })
+  });
 
   app.post('/admcreate', (req, res) => {
     app.app.controllers.adm.create(app, req, res);
+  });
+
+  app.get('/admlogout', (req, res) => {
+    app.app.controllers.adm.logout(app, req, res);
   })
 
 };

@@ -17,6 +17,9 @@
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-dark bg-light border border-success rounded  mb-4">
             <button type="button" class="btn btn-outline-success m-1" onclick="criarEvento()">Criar evento</button>
+            <div class="ml-auto">
+                <button type="button" class="btn btn-outline-success" onclick="rotaDeslogarAdm()">Sair</button>
+            </div>
         </nav>
         <% if(validacao.length>0){ %>
         <div class="alert alert-danger">
@@ -109,6 +112,12 @@
         function criarEvento() {
             window.location.href = '/admcriar';
         }
+    </script>
+
+    <script type="text/javascript">
+        function rotaDeslogarAdm() {
+            window.location.href = '/admlogout';
+        }           
     </script>
 </body>
 

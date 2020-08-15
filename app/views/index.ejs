@@ -16,8 +16,7 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-dark bg-light border border-success rounded  mb-4">
-            <button type="button" class="btn btn-outline-success m-1" onclick="rotaAdm()">ADM</button> <button
-                type="button" class="btn btn-outline-success m-1">Cliente</button>
+            <button type="button" class="btn btn-outline-success m-1" onclick="rotaLoginAdm()">ADM</button>
         </nav>
         <div class="row">
             <div class="col-md-9">
@@ -45,7 +44,8 @@
                         <td><%= eventos[i].empresa %></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="#" class="btn btn-success"><i class="fas fa-edit"> Comprar</i></a>
+                                <a class="btn btn-success" onclick="rotaLoginUser()"><i class="fas fa-edit">
+                                        Comprar</i></a>
                             </div>
                         </td>
                     </tr>
@@ -89,11 +89,11 @@
         crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        function rotaAdm() {
+        function rotaLoginAdm() {
             window.location.href = '/admlogin';
         }
-        function rotaCliente() {
-            window.location.href = '/clientelogin';
+        function rotaLoginUser() {
+            window.location.href = '/userlogin';
         }            
     </script>
 </body>
