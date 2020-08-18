@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Lista de eventos</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#" />
+
+</head>
+
+<body>
+    <div class="container">
+        <nav
+            class="navbar navbar-expand-md navbar-dark bg-light border border-success rounded d-flex justify-content-center mb-4">
+            <div class="text-center text-success"> Cadastro de usuário</div>
+        </nav>
+        <div class="container">
+            <% if(validacao.length>0){ %>
+            <div class="alert alert-danger">
+                <strong>Atenção!</strong>
+                <ul>
+                    <% for(let i=0; i<validacao.length;i++){ %>
+                    <li> <%=validacao[i].msg%> </li>
+                    <% } %>
+                </ul>
+            </div>
+            <% } %>
+            <form action="/usercriar" method="post">
+                <div class="form-row">
+                    <div class="form-group text-success col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <label for="inputEmail4">Nome</label>
+                        <input class="form-control" name="nome" value="<%= dadosForm.nome %>">
+                    </div>
+                    <div class="form-group text-success col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label for="inputEmail4">Apelido</label>
+                        <input class="form-control" name="username" value="<%= dadosForm.username %>">
+                    </div>
+                    <div class="form-group text-success  col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label for="inputPassword4">Telefone</label>
+                        <input class="form-control" name="telefone" value="<%= dadosForm.telefone %>">
+                    </div>
+                    <div class="form-group text-success  col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <label for="inputPassword4">email</label>
+                        <input class="form-control" name="email" value="<%= dadosForm.email %>">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group text-success  col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label for="inputPassword4">CPF</label>
+                        <input class="form-control" name="cpf" value="<%= dadosForm.cpf %>">
+                    </div>
+                    <div class="form-group text-success  col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <label for="inputEmail4">Senha</label>
+                        <input class="form-control" name="senha" value="<%= dadosForm.senha %>">
+                    </div>
+                    <div class="form-group text-success  col-xs-12 col-sm-12 col-md-4 col-lg-6">
+                        <label for="inputPassword4"> Endereço </label>
+                        <input class="form-control" name="endereco" value="<%= dadosForm.endereco %>">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success m-1">Criar</button>
+            </form>
+        </div>
+
+
+        <!-- Footer -->
+        <footer class="page-footer font-small bg-light border border-success rounded navbar-fixed-bottom">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center text-success py-3">© 2020 Copyright:
+                <a href="https://mdbootstrap.com/"> MBlaBs.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        function rotaLoginAdm() {
+            window.location.href = '/admlogin';
+        }
+        function rotaLoginUser() {
+            window.location.href = '/userlogin';
+        }            
+    </script>
+</body>
+
+</html>

@@ -16,7 +16,10 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-dark bg-light border border-success rounded  mb-4">
-            <button type="button" class="btn btn-outline-success m-1" onclick="rotaLoginAdm()">ADM</button>
+            <h4>Olá <%= user.username %></h4>
+            <div class="ml-auto">
+                <button type="button" class="btn btn-outline-success" onclick="rotaDeslogarUser()">Sair</button>
+            </div>
         </nav>
         <div class="row">
             <div class="col-md-9">
@@ -29,8 +32,8 @@
                         <th>Local</th>
                         <th>Data</th>
                         <th>Ingressos disponíveis</th>
-                        <th>Valor</th>
                         <th>Empresa</th>
+                        <th>Quantidade</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -42,20 +45,47 @@
                         <td><%= eventos[i].local %></td>
                         <td><%= eventos[i].data_formatada %></td>
                         <td><%= eventos[i].ingressos_disp %></td>
-                        <td> R$ <%= eventos[i].valor %></td>
                         <td><%= eventos[i].empresa %></td>
                         <td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a class="btn btn-success" onclick="rotaLoginUser()"><i class="fas fa-edit">
-                                        Comprar</i></a>
+                            <div class="col-xs-2">
+                                <input type="number" id="quantidade" name="quantidade" min="1"
+                                    max="<%= eventos[i].ingressos_disp %>" onchange="mudar()">
                             </div>
+                        </td>
+                        <td>
+                            <% if(eventos[i].ingressos_disp<=0){ %>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button class="btn btn-success" onclick="rotaLoginUser()"><i class="fas fa-edit"
+                                        disabled>Comprar</i></button>
+                            </div>
+                            <% }else{ %>
+                            <form action="/finalizarcompra" method="POST">
+                                <div class="form-group">
+                                    <input type="text" name="eventos_id" value="<%= eventos[0].id %>" hidden>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="username" value="<%= user.username %>" hidden>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="quantidadeingressos" name="quantidade" hidden>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="valor" value="<%= eventos[0].valor%>" hidden>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="ingressos_disp" value="<%= eventos[i].ingressos_disp %>" hidden>
+                                </div>
+                                <button type="submit" class="btn btn-success"><i
+                                        class="fas fa-edit">Comprar</i></button>
+                            </form>
+                            <% } %>
                         </td>
                     </tr>
                     <% } %>
                     <% }else{ %>
                     <tr>
                         <td colspan=5 class="text-center">
-                            Não Há produtos para serem listados
+                            Não Há eventos para serem listados
                         </td>
                     </tr>
                     <% } %>
@@ -91,12 +121,14 @@
         crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        function rotaLoginAdm() {
-            window.location.href = '/admlogin';
+        function rotaDeslogarUser() {
+            window.location.href = '/userlogout';
         }
-        function rotaLoginUser() {
-            window.location.href = '/userlogin';
-        }            
+
+        function mudar() {
+            document.getElementById('quantidadeingressos').value = document.getElementById('quantidade').value
+        }
+
     </script>
 </body>
 

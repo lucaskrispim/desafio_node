@@ -17,8 +17,11 @@ class EventosDAO{ // model de conexão, inserção e busca no banco de dados
     updateEvento(body,callback){
         this.connection.query("update eventos set nome=?,data=?,local=?,valor=?,ingressos_disp=?,empresa=? where id=?",[body.nome,body.data_formatada,body.local,body.valor,body.ingressos_disp,body.empresa,body.id],callback);
     }
+    updateIngressos(body,callback){
+
+        this.connection.query("update eventos set ingressos_disp=? where id=?",[body.ingressos_disp,body.id],callback);
+    }
     criarEvento(body,callback){
-        //this.connection.query("insert into eventos (nome,data,local,valor,ingressos_disp,empresa) values ?",[body.nome,body.data,body.local,body.valor,body.ingressos_disp,body.empresa,body.id],callback);
         this.connection.query('insert into eventos set ?',body,callback);
     }
 
